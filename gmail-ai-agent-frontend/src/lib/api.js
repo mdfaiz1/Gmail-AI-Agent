@@ -36,8 +36,9 @@ export const toggleEmailSyncApi = async data => {
 };
 
 export const sendMailReplyApi = async data => {
+  console.log(data);
   const resposne = await axiosInstance.put(
-    `/email/sendMail/${data.emailId}`,
+    `/email/sendMail/${data}`,
     data
   );
   return resposne.data;
