@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/pagination";
 import { Loader2 } from "lucide-react";
 import EmailCard from "./EmailCard";
-import CardSkeleton from "../../../components/skeleton/cardSkeleton";
+import CardSkeleton from "../../../components/skeleton/CardSkeleton";
 import { useEmailFetchHook } from "../../../hooks/useEmailFetchHook";
 import { useAuthUser } from "../../../hooks/useAuthUser";
 
