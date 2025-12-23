@@ -105,8 +105,9 @@ export const sendingMail = async (req, res) => {
   try {
     const { emailId } = req.params;
     console.log("Sending Mail Request for emailId:", emailId);
-    const { newStatus } = req.body;
-    console.log("New Status:", newStatus);
+    // const { newStatus } = req.body;
+    console.log("New Status:", req.body);
+    const newStatus = "SENDING"
 
     if (!emailId) {
       return res

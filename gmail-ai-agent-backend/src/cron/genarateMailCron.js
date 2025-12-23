@@ -27,8 +27,8 @@ const saveReplyToDatabase = async (threadId, replyMsg) => {
 
 export const startGenerateMailCron = () => {
   // Runs every 5 minutes
-  cron.schedule("*/5 * * * *", async () => {
-    // cron.schedule("*/10 * * * * *", async () => {
+  // cron.schedule("*/5 * * * *", async () => {
+    cron.schedule("*/20 * * * * *", async () => {
     console.log("[Cron] Checking for emails needing replies...");
 
     try {

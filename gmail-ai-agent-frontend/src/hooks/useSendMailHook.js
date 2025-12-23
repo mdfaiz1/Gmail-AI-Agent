@@ -16,6 +16,7 @@ export const useSendMailMutation = () => {
       }
     },
     onError: error => {
+      console.log(error)
       const errorMessage =
         error.response?.data?.message || "Failed to send the reply.";
       toast.error(errorMessage);
