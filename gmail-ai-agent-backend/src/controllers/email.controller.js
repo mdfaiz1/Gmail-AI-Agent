@@ -5,7 +5,6 @@ export const toggleAutoSync = async (req, res) => {
   try {
     const { enable } = req.query;
     const { userId } = req.params;
-    // console.log("Toggle Auto-Sync Request:", { userId, enable });
 
     // 1. Validation
     if (!userId || !enable) {
