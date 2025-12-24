@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.get("/", (_, res) => {
-  res.send("Hello, World!");
+  res.send("Hello Backend of Gamil Ai Agent");
 });
 
 app.use("/api/v1/auth", authRoutes);
