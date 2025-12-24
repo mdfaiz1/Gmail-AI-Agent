@@ -17,7 +17,7 @@ function App() {
 
   const GoogleAuthWrapper = () => {
     return (
-      <GoogleOAuthProvider clientId="853597567110-kt2n33739me3e5q7htngj40d3u9v7a8t.apps.googleusercontent.com">
+      <GoogleOAuthProvider clientId={import.meta.env.VITE_CLIENT_ID}>
         <AuthPage refetchAuthUser={refetchAuthUser} />
       </GoogleOAuthProvider>
     );
