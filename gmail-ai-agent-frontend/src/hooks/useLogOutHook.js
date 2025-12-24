@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuthUser } from "./useAuthUser";
 import { toast } from "react-toastify";
 
-export const useLogoutHook = () => {
+export const useLogOutHook = () => {
   const navigate = useNavigate();
   const { removeAuthUser } = useAuthUser();
   const queryClient = useQueryClient();

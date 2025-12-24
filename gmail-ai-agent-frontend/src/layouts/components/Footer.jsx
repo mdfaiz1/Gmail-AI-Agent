@@ -4,11 +4,11 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { LogOut } from "lucide-react";
-import { useLogoutHook } from "../../hooks/useLogoutHook";
+import { useLogOutHook } from "../../hooks/useLogOutHook";
 import { useAuthUser } from "../../hooks/useAuthUser";
 
 const Footer = () => {
-  const { logout, isPending } = useLogoutHook();
+  const { logout, isPending } = useLogOutHook();
   const { authUser } = useAuthUser();
   return (
     <SidebarFooter className="p-2 border-t border-zinc-900">
