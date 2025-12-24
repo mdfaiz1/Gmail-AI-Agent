@@ -8,18 +8,18 @@ const saveReplyToDatabase = async (threadId, replyMsg) => {
     // console.log(replyMsg.message);
     // console.log(replyMsg.subject);
     if (!threadId) {
-      console.error("[Error] threadId is required to save reply.");
+      // console.error("[Error] threadId is required to save reply.");
       return;
     }
     if (!replyMsg || !replyMsg.message) {
-      console.error(`[Error] Invalid reply message for thread ID: ${threadId}`);
+      // console.error(`[Error] Invalid reply message for thread ID: ${threadId}`);
       return;
     }
     await EmailThread.findByIdAndUpdate(threadId, {
       generatedReply: replyMsg,
       status: "DRAFT_GENERATED",
     });
-    console.log(`[Success] Reply saved for thread ID: ${threadId}`);
+    // console.log(`[Success] Reply saved for thread ID: ${threadId}`);
   } catch (error) {
     console.error(`[DB Error] Failed to save reply for ${threadId}:`, error);
   }

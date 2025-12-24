@@ -6,34 +6,33 @@ import { toast } from "react-toastify";
 
 const AuthPage = ({ refetchAuthUser }) => {
   const navigate = useNavigate();
-  const { loginMutation, isLoading, error, mutateAsync } = useLoginHook();
+  const loginMutation = useLoginHook();
   const responseGoogle = async response => {
     try {
-      if (response["code"]) {
-        const res = await mutateAsync(response["code"]);
-        console.log("Google Login Response:", res.data.success);
-        if (res.data.success) {
-          const { email, name, picture } = res.data.user;
-          const token = res.data.token;
-          const obj = { email, name, picture, token };
-          localStorage.setItem("gmail-user", JSON.stringify(obj));
-          await refetchAuthUser();
-          toast.success("Login successful!");
-          navigate("/dashboard");
-        }
+      if (!response?.code) return;
+
+      const res = await loginMutation.mutateAsync(response.code);
+
+      if (res?.data?.success) {
+        localStorage.setItem("gmail-user", JSON.stringify(res.data.user));
+
+        await refetchAuthUser();
+        toast.success("Login successful!");
+        navigate("/dashboard");
       }
-    } catch (error) {
-      console.error("Google Login Error:", error);
+    } catch (err) {
+      console.error("Google Login Error:", err);
+      toast.error("Google login failed");
     }
   };
 
   const googleLogin = useGoogleLogin({
     onSuccess: responseGoogle,
-    onError: responseGoogle,
+    onError: () => toast.error("Google login failed"),
     flow: "auth-code",
     scope: "openid email profile https://www.googleapis.com/auth/gmail.modify",
   });
-  if (isLoading) {
+  if (loginMutation.isLoading) {
     return (
       <div class="flex flex-col gap-4 w-full h-screen items-center justify-center">
         <div class="w-20 h-20 border-4 border-transparent text-blue-400 text-4xl animate-spin flex items-center justify-center border-t-blue-400 rounded-full">

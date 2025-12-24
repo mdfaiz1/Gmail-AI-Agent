@@ -1,6 +1,7 @@
 import { axiosInstance } from "./axios";
 
-export const googleLoginApi = code => {
+export const googleLoginApi = async code => {
+  console.log(code);
   return axiosInstance.get(`/auth/google/login?code=${code}`);
 };
 

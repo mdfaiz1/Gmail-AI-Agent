@@ -31,7 +31,7 @@ export const startEmailCron = () => {
 
       if (candidates.length === 0) return;
 
-      console.log(`[Cron] Selected ${candidates.length} users for processing.`);
+      // console.log(`[Cron] Selected ${candidates.length} users for processing.`);
 
       // 2. Lock & Process Loop
       for (const candidate of candidates) {

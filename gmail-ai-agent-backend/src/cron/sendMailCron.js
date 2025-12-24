@@ -13,12 +13,12 @@ let isJobRunning = false;
 export const startSendMailCron = () => {
   cron.schedule("*/10 * * * * *", async () => {
     if (isJobRunning) {
-      console.log("[SendCron] Previous job busy. Skipping.");
+      // console.log("[SendCron] Previous job busy. Skipping.");
       return;
     }
 
     isJobRunning = true;
-    console.log("[SendCron] Checking for emails to send...");
+    // console.log("[SendCron] Checking for emails to send...");
 
     try {
       // 1. Fetch emails to send.
@@ -39,9 +39,9 @@ export const startSendMailCron = () => {
           const user = await User.findById(email.userId);
 
           if (!user || !user.refreshToken) {
-            console.error(
-              `[SendCron] User or Refresh Token missing for email ${email._id}`
-            );
+            // console.error(
+            //   `[SendCron] User or Refresh Token missing for email ${email._id}`
+            // );
             email.status = "FAILED";
             await email.save();
             continue; // Skip to next email

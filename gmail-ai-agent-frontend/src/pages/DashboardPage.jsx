@@ -4,7 +4,7 @@ import { useAuthUser } from "../hooks/useAuthUser";
 export default function WelcomeDashboard() {
   const [time, setTime] = useState(new Date());
   const { authUser } = useAuthUser();
-  console.log("Authenticated User Data in Dashboard:", authUser);
+  // console.log("Authenticated User Data in Dashboard:", authUser);/
 
   // Update time every second
   useEffect(() => {

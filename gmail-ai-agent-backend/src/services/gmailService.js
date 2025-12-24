@@ -78,7 +78,7 @@ export const fetchEmailsService = async userId => {
         }
       })
     );
-    console.log(fullEmailsData);
+    // console.log(fullEmailsData);
     const validEmails = fullEmailsData.filter(e => e !== null);
     const savedCount = await saveEmailsToDb(userId, validEmails);
     totalSaved += savedCount;
