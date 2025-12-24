@@ -38,10 +38,12 @@ export const googleLogin = async (req, res) => {
     const jwtToken = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
       expiresIn: "7d",
     });
+    const isProd = process.env.NODE_ENV === "production";
     res.cookie("gmail_token", jwtToken, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+      secure: isProd,
+      sameSite: isProd ? "none" : "lax",
+      maxAge: 7 * 24 * 60 * 60 * 1000,
     });
     return res.status(200).json({
       success: true,
