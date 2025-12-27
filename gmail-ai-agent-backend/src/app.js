@@ -8,7 +8,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://gmail-ai-agent-five.vercel.app", // Allow your frontend
+    origin: "https://gmail-ai-agent-three.vercel.app", // Allow your frontend
     // origin: "http://localhost:5000", // Allow your frontend
     credentials: true, // Allow cookies to be sent back and forth
   })
